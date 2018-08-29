@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Challenges
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="love">
+        Love
+      </ion-segment-button>
+      <ion-segment-button value="fun">
+        Fun
+      </ion-segment-button>
+      <ion-segment-button value="trash">
+        Trash
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="category">
+    <ion-list *ngSwitchCase="'love'">
+      <ion-item *ngFor="let challenge of challenges">
+        <ion-thumbnail item-start>
+          <img src="../../../../backend/{{challenge.file.path}}">
+        </ion-thumbnail>
+        <h2>{{challenge.file.name}}</h2>
+       <p>{{challenge.file.description}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'fun'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-3.jpg">
+        </ion-thumbnail>
+        <h2>Milo</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-4.jpg">
+        </ion-thumbnail>
+        <h2>Bandit</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-2.jpg">
+        </ion-thumbnail>
+        <h2>Nala</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'trash'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
