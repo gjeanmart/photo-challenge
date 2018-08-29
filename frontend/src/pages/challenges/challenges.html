@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Challenges
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="love">
+        Love
+      </ion-segment-button>
+      <ion-segment-button value="fun">
+        Fun
+      </ion-segment-button>
+      <ion-segment-button value="trash">
+        Trash
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="category">
+    <ion-list *ngSwitchCase="'love'">
+      <ion-item *ngFor="let challenge of challenges['love']" ion-item (click)="getPictures()">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+        </ion-thumbnail>
+        <h2>{{challenge.name}}</h2>
+       <p>{{challenge.description}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'fun'">
+      <ion-item *ngFor="let challenge of challenges['fun']">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+        </ion-thumbnail>
+        <h2>{{challenge.name}}</h2>
+       <p>{{challenge.description}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'trash'">
+      <ion-item *ngFor="let challenge of challenges['trash']">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+        </ion-thumbnail>
+        <h2>{{challenge.name}}</h2>
+       <p>{{challenge.description}}</p>
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>
