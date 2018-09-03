@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { ChallengesPage } from '../pages/challenges/challenges';
+import { ChallengeModal } from '../pages/challenges/challenge-modal';
 import { PhotosPage } from '../pages/photos/photos';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     MyApp,
     ChallengesPage,
+    ChallengeModal,
     PhotosPage,
     HomePage,
     TabsPage
@@ -29,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     MyApp,
     ChallengesPage,
+    ChallengeModal,
     PhotosPage,
     HomePage,
     TabsPage

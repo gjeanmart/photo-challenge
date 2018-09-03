@@ -17,4 +17,25 @@
   <p>
     Le vainceur du photo challenge aura ... une surpise :)
   </p>
+
+  <form [formGroup]="userForm">
+
+    <ion-item>
+      <ion-label floating>Entrer votre nom</ion-label>
+      <ion-input [formControl]="userForm.controls['name']"
+          type="text"></ion-input>
+    </ion-item>
+    
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block (click)="save()">
+          Sauvegarder votre nom
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+
 </ion-content>

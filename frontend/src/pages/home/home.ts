@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,28 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  userForm: FormGroup;
 
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+
+    this.userForm = this.formBuilder.group({
+      	name: [window.localStorage.user]
+    });
   }
+
+  save() {
+    window.localStorage.user = this.userForm.value.name;
+    const popup = this.alertCtrl.create({
+      title: 'Hey ' + this.userForm.value.name,
+      message: 'Votre nom est sauvegarde!',
+      buttons: [
+        {
+          text: 'Fermer'
+        }
+      ]
+    });
+    popup.present();
+  }
+
 
 }

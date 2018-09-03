@@ -13,8 +13,8 @@
       <ion-segment-button value="fun">
         Fun
       </ion-segment-button>
-      <ion-segment-button value="trash">
-        Trash
+      <ion-segment-button value="freestyle">
+        Freestyle
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -23,32 +23,65 @@
 <ion-content>
   <div [ngSwitch]="category">
     <ion-list *ngSwitchCase="'love'">
-      <ion-item *ngFor="let challenge of challenges['love']" ion-item (click)="getPictures()">
+      <ion-item *ngFor="let challenge of challenges['love']">
         <ion-thumbnail item-start>
-          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+          <img src="{{endpoint}}/api/challenge/{{challenge._id}}/thumbnail">
         </ion-thumbnail>
-        <h2>{{challenge.name}}</h2>
-       <p>{{challenge.description}}</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-9>
+                <h2>{{challenge.name}}</h2>
+                <p>{{challenge.description}}</p> 
+            </ion-col>
+            <ion-col col-3>
+              <label id="#bb"><ion-icon  ios="ios-camera" md="md-camera"></ion-icon>
+                <input type="file" accept="image/*" (change)="onUploadChange($event)" name="fileInput" id="{{challenge._id}}" #fileInput  size="60" >
+              </label> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
     </ion-list>
 
     <ion-list *ngSwitchCase="'fun'">
       <ion-item *ngFor="let challenge of challenges['fun']">
         <ion-thumbnail item-start>
-          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+          <img src="{{endpoint}}/api/challenge/{{challenge._id}}/thumbnail">
         </ion-thumbnail>
-        <h2>{{challenge.name}}</h2>
-       <p>{{challenge.description}}</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-9>
+                <h2>{{challenge.name}}</h2>
+                <p>{{challenge.description}}</p> 
+            </ion-col>
+            <ion-col col-3>
+              <label id="#bb"><ion-icon  ios="ios-camera" md="md-camera"></ion-icon>
+                <input type="file" accept="image/*" (change)="onUploadChange($event)" name="fileInput" id="{{challenge._id}}" #fileInput  size="60" >
+              </label> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'trash'">
-      <ion-item *ngFor="let challenge of challenges['trash']">
+    <ion-list *ngSwitchCase="'freestyle'">
+      <ion-item *ngFor="let challenge of challenges['freestyle']">
         <ion-thumbnail item-start>
-          <img src="assets/imgs/challenges/{{challenge.file.filename}}">
+          <img src="{{endpoint}}/api/challenge/{{challenge._id}}/thumbnail">
         </ion-thumbnail>
-        <h2>{{challenge.name}}</h2>
-       <p>{{challenge.description}}</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-9>
+                <h2>{{challenge.name}}</h2>
+                <p>{{challenge.description}}</p> 
+            </ion-col>
+            <ion-col col-3>
+              <label id="#bb"><ion-icon  ios="ios-camera" md="md-camera"></ion-icon>
+                <input type="file" accept="image/*" (change)="onUploadChange($event)" name="fileInput" id="{{challenge._id}}" #fileInput  size="60" >
+              </label> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
     </ion-list>
 
