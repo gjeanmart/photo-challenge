@@ -60,12 +60,10 @@ router.post('/challenge', challengeFolderUpload.single('file'), function (req, r
 	var body = JSON.parse(req.body.content);
 
 	if(!body.name) res.status(400).send('name required');
-	if(!body.category) res.status(400).send('category required');
 
 	var challenge = {
 		"name": body.name,
 		"description": body.description,
-		"category": body.category,
 		"file": req.file,
 		"dateCreated": new Date()
 	};

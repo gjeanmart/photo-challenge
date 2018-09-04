@@ -24,18 +24,16 @@ export class HomePage {
 	        		placeholder: 'nom'
 	      	}
 	    	],
-	    	buttons: [
-	      		{
-	        		text: 'Sauvegarde',
-	        		handler: data => {
-	          			if (data.name != "") {
-    						window.localStorage.user = data.name;
-	          			} else {
-	            			return false;
-	          			}
-	       	 		}
-	      	}
-	    	]
+	    	buttons: [{
+        		text: 'Sauvegarde',
+        		handler: data => {
+          			if (data.name != "") {
+						window.localStorage.user = data.name;
+          			} else {
+            			return false;
+          			}
+       	 		}
+	      	}]
 	  	});
 	  	alert.present();
 	}  

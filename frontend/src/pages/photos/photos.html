@@ -9,21 +9,13 @@
 <ion-content>
   <ion-card *ngFor="let photo of photos">
     <img src="{{endpoint}}/api/download/{{photo._id}}" />
-
-
+    
     <ion-row>
       <ion-col>
         <button ion-button icon-start clear small>
           <div>Photo poste par {{photo.user}}</div>
         </button>
       </ion-col>
-      <!--
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <div>{{photo.challenge.name}}</div>
-        </button>
-      </ion-col>
-    -->
       <ion-col center text-center>
         <ion-note>
           <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="photo.dateCreated"></ion-datetime>

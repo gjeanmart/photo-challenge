@@ -3,14 +3,15 @@ import { NavController, ViewController, NavParams, AlertController, LoadingContr
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PhotosPage } from '../photos/photos';
+import { ENV } from '../../config/environment.dev';
 
 @Component({
 	selector: 'challenge-modal',
 	templateUrl: 'challenge-modal.html',
 })
 export class ChallengeModal {
-    readonly endpoint = "http://192.168.0.24:8080";
-	public imageUrl: SafeResourceUrl;;
+    readonly endpoint = ENV.API_URL;
+	public imageUrl: SafeResourceUrl;
 	public formData: FormData;
     public loading: any;
     public navCtrl: NavController;
