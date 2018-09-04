@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'page-home',
@@ -8,28 +7,36 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class HomePage {
 
-  userForm: FormGroup;
+  	constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  		if(!window.localStorage.user) {
+  			this.login();
+  		}
+  	}
 
-    this.userForm = this.formBuilder.group({
-      	name: [window.localStorage.user]
-    });
-  }
-
-  save() {
-    window.localStorage.user = this.userForm.value.name;
-    const popup = this.alertCtrl.create({
-      title: 'Hey ' + this.userForm.value.name,
-      message: 'Votre nom est sauvegarde!',
-      buttons: [
-        {
-          text: 'Fermer'
-        }
-      ]
-    });
-    popup.present();
-  }
-
-
+	login() {
+	  	let alert = this.alertCtrl.create({
+	    	title: 'Bienvenue',
+	    	message: 'Entrer votre nom pour participer au photo challenge',
+	    	inputs: [
+	      		{
+	        		name: 'name',
+	        		placeholder: 'nom'
+	      	}
+	    	],
+	    	buttons: [
+	      		{
+	        		text: 'Sauvegarde',
+	        		handler: data => {
+	          			if (data.name != "") {
+    						window.localStorage.user = data.name;
+	          			} else {
+	            			return false;
+	          			}
+	       	 		}
+	      	}
+	    	]
+	  	});
+	  	alert.present();
+	}  
 }
