@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController, AlertController, LoadingController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { ChallengeModal } from './challenge-modal';
 import { ENV } from '../../config/environment.dev';
 
