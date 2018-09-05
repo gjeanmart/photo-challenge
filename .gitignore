@@ -60,3 +60,8 @@ apikey.py
 .elasticsearch
 .zookeeper
 .mongodb
+
+# folders
+
+**/challenges/**
+**/photos/**

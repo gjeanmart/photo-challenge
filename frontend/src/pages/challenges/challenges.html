@@ -14,12 +14,11 @@
       </ion-thumbnail>
       <ion-grid>
         <ion-row>
-          <ion-col col-9>
+          <ion-col col-9 text-wrap>
               <h2>{{challenge.name}}</h2>
-              <p>{{challenge.description}}</p> 
           </ion-col>
           <ion-col col-3>
-            <label id="#bb"><ion-icon  ios="ios-camera" md="md-camera"></ion-icon>
+            <label id="#bb"><img src="assets/icon/camera.png">
               <input type="file" accept="image/*" (change)="onUploadChange($event)" name="fileInput" id="{{challenge._id}}" #fileInput  size="60" >
             </label> 
           </ion-col>

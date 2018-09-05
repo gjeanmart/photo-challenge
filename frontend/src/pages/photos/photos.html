@@ -11,14 +11,14 @@
     <img src="{{endpoint}}/api/download/{{photo._id}}" />
     
     <ion-row>
-      <ion-col>
+      <ion-col col-8 text-wrap>
         <button ion-button icon-start clear small>
-          <div>Photo poste par {{photo.user}}</div>
+          <div>{{photo.challenge.name}}</div>
         </button>
       </ion-col>
-      <ion-col center text-center>
+      <ion-col col-4 right text-right  text-wrap>
         <ion-note>
-          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="photo.dateCreated"></ion-datetime>
+          {{photo.user}}<br/>{{photo.dateCreated | date:'dd-MM-yyyy HH:mm' }}
         </ion-note>
       </ion-col>
     </ion-row>
