@@ -25,7 +25,7 @@ export class HomePage {
 	      	}
 	    	],
 	    	buttons: [{
-        		text: 'Sauvegarde',
+        		text: 'Sauvegardé',
         		handler: data => {
           			if (data.name != "") {
 						window.localStorage.user = data.name;
