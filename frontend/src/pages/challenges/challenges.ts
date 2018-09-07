@@ -10,47 +10,46 @@ import { ENV } from '../../config/environment.dev';
     templateUrl: 'challenges.html'
 })
 export class ChallengesPage {
-    readonly endpoint = ENV.API_URL;
-  	public obs: Observable<any>;
-    public challenges: any;
-    @ViewChild("fileInput") fileInput: ElementRef;
+  readonly endpoint = ENV.API_URL;
+	public obs: Observable<any>;
+  public challenges: any;
+  @ViewChild("fileInput") fileInput: ElementRef;
 
-  	constructor(public navCtrl: NavController, public httpClient: HttpClient, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public modalCtrl : ModalController) { }
+	constructor(public navCtrl: NavController, public httpClient: HttpClient, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public modalCtrl : ModalController) { }
 
-    ionViewWillEnter() {
-      this.challenges = [];
-      this.loadChallenges();
-    }
-  
-    onUploadChange(ev) {
-      let file = ev.target.files[0];
-      let id = ev.target.id;
+  ionViewWillEnter() {
+    this.challenges = [];
+    this.loadChallenges();
+  }
 
-      ev.preventDefault();
-      this.readFile(id, file);
-    }
+  onUploadChange(ev) {
+    let file = ev.target.files[0];
+    let id = ev.target.id;
 
-    private readFile(id: string, file: any) {
+    ev.preventDefault();
+    this.readFile(id, file);
+  }
 
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const formData = new FormData();
-        const imgBlob = new Blob([reader.result], {type: file.type});
-        formData.append('file', imgBlob, file.name);
-        formData.append('content', id);
+  private readFile(id: string, file: any) {
 
-        var modalPage = this.modalCtrl.create(ChallengeModal, { url : URL.createObjectURL(imgBlob), formData: formData, navCtrl: this.navCtrl });
-        modalPage.present();
-      };
-      reader.readAsArrayBuffer(file);
-    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const formData = new FormData();
+      const imgBlob = new Blob([reader.result], {type: file.type});
+      formData.append('file', imgBlob, file.name);
+      formData.append('content', id);
 
-    private loadChallenges() {
-      this.obs = this.httpClient.get(this.endpoint + '/api/challenge');
-      this.obs.subscribe(data => {
-        this.challenges = data;
-        console.log(this.challenges);
-      })
-    }
+      var modalPage = this.modalCtrl.create(ChallengeModal, { url : URL.createObjectURL(imgBlob), formData: formData, navCtrl: this.navCtrl });
+      modalPage.present();
+    };
+    reader.readAsArrayBuffer(file);
+  }
 
+  private loadChallenges() {
+    this.obs = this.httpClient.get(this.endpoint + '/api/challenge');
+    this.obs.subscribe(data => {
+      this.challenges = data;
+      console.log(this.challenges);
+    })
+  }
 }

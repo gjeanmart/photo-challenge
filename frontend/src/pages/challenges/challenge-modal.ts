@@ -46,24 +46,23 @@ export class ChallengeModal {
 
       this.httpClient.post(this.endpoint + '/api/photo', formData, httpOptions)
         .subscribe(data => {
-          console.log(data);
-          this.loading.dismiss();
-          this.showSuccess();
+          	this.loading.dismiss();
+          	this.showSuccess();
         }, error => {
-          console.log(error);
-          this.loading.dismiss();
-          this.showError(error);
+          	console.log(error);
+          	this.loading.dismiss();
+          	this.showError(error);
         });
     }
 
 
   showSuccess() {
     const popup = this.alertCtrl.create({
-      title: 'Votre photo a ete sauvegarde!',
-      message: '',
-      buttons: [
+      	title: 'Votre photo a été sauvegardé!',
+      	message: '',
+      	buttons: [
         {
-          text: 'Autres Challenges',
+          text: 'Voir les challenges',
           handler: () => {
 	    	this.viewCtrl.dismiss();
             console.log('Disagree clicked');
@@ -75,8 +74,7 @@ export class ChallengeModal {
 	    	this.viewCtrl.dismiss();
         	this.navCtrl.setRoot(PhotosPage);
           }
-        }
-      ]
+        }]
     });
     popup.present();
   }
@@ -84,13 +82,12 @@ export class ChallengeModal {
 
   showError(error) {
     const popup = this.alertCtrl.create({
-      title: 'Erreur',
-      message: error,
-      buttons: [
+      	title: 'Erreur',
+      	message: error,
+      	buttons: [
         {
           text: 'Fermer'
-        }
-      ]
+        }]
     });
     popup.present();
   }
