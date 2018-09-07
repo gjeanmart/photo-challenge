@@ -58,7 +58,7 @@ export class ChallengeModal {
 
   showSuccess() {
     const popup = this.alertCtrl.create({
-      	title: 'Votre photo a été sauvegardé!',
+      	title: 'Votre photo a été sauvegardée!',
       	message: '',
       	buttons: [
         {
