@@ -83,7 +83,7 @@ router.get('/challenge/:challengeId/thumbnail', function(req, res){
 	console.log("GET /challenge [id:"+req.params.challengeId+"] ")
 
 	getChallenge(req.params.challengeId).then(result => {
-  		var file = base + '/' + result.file.path;
+  		var file = result.file.path;
 
   		res.setHeader('Content-disposition', 'attachment; filename=' + result.file.originalname);
   		res.setHeader('Content-type', result.file.mimetype);
@@ -125,7 +125,7 @@ router.get('/download/:photoId', function(req, res){
 	console.log("GET /photo [id:"+req.params.photoId+"] ")
 
 	getPhoto(req.params.photoId).then(result => {
-  		var file = base + '/' + result.file.path;
+  		var file = result.file.path;
   		res.setHeader('Content-disposition', 'attachment; filename=' + result.file.originalname);
   		res.setHeader('Content-type', result.file.mimetype);
   		res.download(file); 
