@@ -17,8 +17,9 @@ const port = process.env.API_PORT || 8080;    // set our port
 const host = process.env.API_HOST || '0.0.0.0';    // set our host
 
 // Upload
-const photosFolder = 'photos/';
-const challengesFolder = 'challenges/';
+const base = '/opt/workspace/photo-challenge/backend/' 
+const photosFolder = base+'photos/';
+const challengesFolder = base+'challenges/';
 var photoFolderUpload 	= multer({ dest: photosFolder })
 var challengeFolderUpload 	= multer({ dest: challengesFolder })
 
